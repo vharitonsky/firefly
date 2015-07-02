@@ -20,7 +20,8 @@ def Response(status, body):
 def Router(route_map):
     def router(environ, start_response):
         path = environ['PATH_INFO']
-        action = route_map.get(path, Response(404, 'Page not found'))
+        default = Response(404, 'Page not found')
+        action = route_map.get(path, default)
         return action(environ, start_response)
     return router
 
