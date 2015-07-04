@@ -1,7 +1,9 @@
+import time
 from wsgiref.simple_server import make_server
 from caching_middleware import cache_middleware
 
 def simple_app(environ, start_response):
+    time.sleep(3)# perform heavy computation
     start_response('200 OK', [('Content-type', 'text/plain')])
     return  ["Hello world"]
 
