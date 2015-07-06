@@ -8,4 +8,4 @@ def simple_app(environ, start_response):
     return  ["Hello world"]
 
 if __name__ == '__main__':
-    make_server('', 8000, cache_middleware(simple_app, 'file:data')).serve_forever()
+    make_server('', 8000, cache_middleware(simple_app, 'memc:127.0.0.1:11211')).serve_forever()

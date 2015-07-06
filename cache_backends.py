@@ -60,9 +60,9 @@ def memcached_backend(addr):
 def get_backend(backend):
     if backend is None:
         return inprocess_backend()
-    name, config = backend.split(':')
+    name, config = backend.split(':', 1)
     return {
         'file': file_backend,
-        'memcached': memcached_backend
+        'memc': memcached_backend
     }[name](config)
  
